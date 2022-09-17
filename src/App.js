@@ -2,6 +2,8 @@
 
 import React from "react";
 import { useState } from "react";
+import { Item } from "semantic-ui-react";
+import {Button} from "semantic-ui-react";
 
 const DEF_WELCOME = "WELCOME";
 const DEF_READ = "READ";
@@ -93,6 +95,13 @@ function Update(props){
         <p><input type="submit" value="Update"></input></p>
       </form>
     </article>
+}
+
+function ItemList(props){
+  const Items = props.arr.map((it)=>(
+    <Button>{it.title}</Button>
+  ));
+  return Items;
 }
 
 function App() {
@@ -190,6 +199,11 @@ function App() {
         }}
       ></Update>
   }
+  
+  const TitleList = [];
+  for(let i = 0; i<topics.length; i++){
+    TitleList.push(topics[i].title);
+  }
 
   return (
     <div>
@@ -204,11 +218,10 @@ function App() {
       {content}
 
       <ul>
-        {/* <p><input type="submit" value="Create" onClick={(event)=>{
-          event.preventDefault();
-          setMode(DEF_CREATE);
-        }}></input></p> */}
         {contextControl}
+      </ul>
+      <ul>
+        <ItemList arr={topics}/>
       </ul>
     </div>
   );
