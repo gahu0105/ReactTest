@@ -221,6 +221,7 @@ function App() {
         {contextControl}
       </ul>
       <ul>
+        <h2>Map을 이용한 Button 그리기</h2>
         <ItemList arr={topics}/>
       </ul>
     </div>
