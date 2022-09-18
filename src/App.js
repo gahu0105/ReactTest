@@ -1,9 +1,17 @@
 // src/App.js
 
-import React from "react";
+import React, {Component} from "react";
 import { useState } from "react";
-import { Item } from "semantic-ui-react";
-import {Button} from "semantic-ui-react";
+import { Item, Button } from "semantic-ui-react";
+
+import {BrowserRouter, Routes, Route} from "react-router-dom";
+import SignPage from "./pages/SignPage";
+import ProfilePage from "./pages/ProfilePage";
+import MainPage from "./pages/MainPage";
+import Header from "./components/Header";
+import NotFound from "./NotFound";
+import ProductPage from "./pages/ProductPage";
+
 
 const DEF_WELCOME = "WELCOME";
 const DEF_READ = "READ";
@@ -17,7 +25,7 @@ function Article(props) {
     </article>
 }
 
-function Header(props) {
+function Welcom(props) {
   // <header title="Web-React">Welcome</header>
   return <header>
       <h1>
@@ -207,9 +215,21 @@ function App() {
 
   return (
     <div>
-      <Header title="Web-React" onChangeMode={() => {
+      <BrowserRouter>
+        <Header />
+        <Routes>
+          <Route path="/" element={<MainPage/>}></Route>
+          <Route path="/profile/" element={<ProfilePage/>}></Route>
+          <Route path="/sign/" element={<SignPage/>}></Route>
+          <Route path="/product/:productId" element={<ProductPage/>}></Route>
+          {/* <Route path="/product/:productId" search="productName&q=demo#test" element={<ProductPage/>}></Route> */}
+          <Route path="*" element={<NotFound/>}></Route>
+        </Routes>
+      </BrowserRouter>
+
+      <Welcom title="Web-React" onChangeMode={() => {
           setMode(DEF_WELCOME);
-        }}></Header>
+        }}></Welcom>
       <Nav topics={topics} onChangeMode={(_id) => {
           setMode(DEF_READ);
           setID(_id);

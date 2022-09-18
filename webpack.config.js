@@ -40,4 +40,7 @@ module.exports = {
         open: true,
       },
     devtool: 'inline-source-map',
+    resolve: {
+      extensions: ['.js', '.jsx']
+    }
 };
