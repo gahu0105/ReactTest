@@ -16,12 +16,14 @@ module.exports = {
     module: {
         rules: [
           { // 1
-            test: /\.(js|jsx)$/,
+            // test: /\.(js|jsx)$/,
+            test: /\.js|\.jsx$/,
             exclude: /node_modules/,
             use: {
               loader: 'babel-loader',
             },
-          },      { // 2
+          },      
+          { // 2
             test: /\.html$/,
             use: [
               {
@@ -31,6 +33,18 @@ module.exports = {
                 },
               },
             ],
+          },
+          { //3
+            test: /\.css$/,
+            use: [{
+              loader: 'style-loader'
+            },
+            {
+              loader: 'css-loader'
+            }, 
+            {
+              loader: 'sass-loader'
+            }]
           },
         ],
       },

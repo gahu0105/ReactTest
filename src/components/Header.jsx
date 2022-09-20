@@ -1,29 +1,18 @@
-import React from 'react';
+import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
+import './Header.css';
 
 function Header({location, history}){
     return (
         <header className="header">
             <strong>Header</strong>
             <ul>
-                <p>
-                    <Link to="/" onClick={(event)=>{
-                        history.push("/main");
-                    }}>Home</Link>
-                    {/* <button onClick={(event)=>{
-                        history.push('/main');
-                        // <Link to="/"></Link>
-                    }}>Home</button> */}
-                </p>
-                <p>
-                    <Link to="/profile">프로필</Link>
-                </p>
-                <p>
-                    <Link to="/sign">로그인</Link>
-                </p>
-                <p>
-                    <Link to="/product/*">상품</Link>
-                </p>
+                <Link className="header-link" to="/" onClick={(event)=>{
+                    history.push("/main");
+                }}>Home</Link>
+                <Link className="header-link"  to="/profile">프로필</Link>
+                <Link className="header-link"  to="/sign">로그인</Link>
+                <Link className="header-link"  to="/product/*">상품</Link>
             </ul>
         </header>
     );
